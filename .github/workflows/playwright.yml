@@ -9,8 +9,8 @@ jobs:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     env:
-      CAT_STORE_EMAIL: ${{ var.CAT_STORE_EMAIL }}
-      CAT_STORE_PASSWORD: ${{ var.CAT_STORE_PASSWORD }}
+      CAT_STORE_EMAIL: ${{ vars.CAT_STORE_EMAIL }}
+      CAT_STORE_PASSWORD: ${{ vars.CAT_STORE_PASSWORD }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
