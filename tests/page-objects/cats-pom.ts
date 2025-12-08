@@ -120,8 +120,6 @@ export class CatStorePage {
       throw new Error(`Password not found - ${password}`);
     }
 
-    throw new Error(`Email not found - ${email} ${password}`);
-
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.loginSubmitButton.click();
