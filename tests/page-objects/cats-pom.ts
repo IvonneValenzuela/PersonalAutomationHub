@@ -117,7 +117,7 @@ export class CatStorePage {
     }
 
     if (!password) {
-      throw new Error(`Password not found - ${password}`);
+      throw new Error(`Password not found bla - ${password}`);
     }
 
     throw new Error(`Email not found - ${email} ${password}`);
