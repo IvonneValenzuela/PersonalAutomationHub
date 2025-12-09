@@ -8,6 +8,8 @@ test.describe("Purchase my cats litter", () => {
     const email = process.env.CAT_STORE_EMAIL!;
     const password = process.env.CAT_STORE_PASSWORD!;
     const deliveryDate = getNextValidDeliveryDate();
+    const delay = (ms: number) => new Promise((res) => setTimeout(res, ms));
+    const THREE_SECONDS = 3000;
 
     await test.step("Open homepage", async () => {
       await catStorePage.open();
@@ -18,6 +20,7 @@ test.describe("Purchase my cats litter", () => {
     });
 
     await test.step("Authenticate user with valid credentials", async () => {
+      await delay(THREE_SECONDS);
       await catStorePage.login(email, password);
       await expect(page.getByRole("link", { name: "Ivonne" })).toBeVisible();
     });
