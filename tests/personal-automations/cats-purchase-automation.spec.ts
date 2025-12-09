@@ -1,6 +1,7 @@
 import { expect, test } from "@playwright/test";
 import { CatStorePage } from "../page-objects/cats-pom";
 import { getNextValidDeliveryDate } from "../common/helpers/date-helper";
+import { waitThreeSeconds } from "../common/constants";
 
 test.describe("Purchase my cats litter", () => {
   test("I can purchase my cats litter", async ({ page }) => {
@@ -13,16 +14,20 @@ test.describe("Purchase my cats litter", () => {
       await catStorePage.open();
     });
 
+    waitThreeSeconds;
+
     await test.step("Open login form", async () => {
       await catStorePage.clickOnLoginButton();
     });
 
     await test.step("Authenticate user with valid credentials", async () => {
+      waitThreeSeconds;
       await catStorePage.login(email, password);
       await expect(page.getByRole("link", { name: "Ivonne" })).toBeVisible();
     });
 
     await test.step("Open Cats category from main menu", async () => {
+      waitThreeSeconds;
       await catStorePage.clickOnCatMenuButton();
     });
 
@@ -57,6 +62,8 @@ test.describe("Purchase my cats litter", () => {
     await test.step("Choose valid delivery date (no Sundays/holidays)", async () => {
       await catStorePage.setDeliveryDate(deliveryDate);
     });
+
+    waitThreeSeconds;
 
     await test.step("Select payment method and accept terms", async () => {
       await catStorePage.selectPaymentType();
