@@ -112,8 +112,18 @@ export class CatStorePage {
   }
 
   async login(email: string, password: string): Promise<void> {
+    if (!email) {
+      throw new Error(`Email not found - ${email} ${password}`);
+    }
+
+    if (!password) {
+      throw new Error(`Password not found - ${password}`);
+    }
+    // delay 3s
     await this.emailInput.fill(email);
+    //delay
     await this.passwordInput.fill(password);
+    //delay
     await this.loginSubmitButton.click();
   }
 
