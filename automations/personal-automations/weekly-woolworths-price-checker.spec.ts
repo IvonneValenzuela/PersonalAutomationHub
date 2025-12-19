@@ -14,7 +14,7 @@ test.describe("Weekly Woolworths Price Checker", () => {
   test("Get Woolworths prices for my list (grouped by category)", async ({
     page,
   }) => {
-    test.setTimeout(2 * 60 * 1000);
+    test.setTimeout(Math.max(2 * 60 * 1000, products.length * 25_000));
 
     const woolworths = new WoolworthsPage(page);
     const results: Result[] = [];

@@ -19,7 +19,15 @@ export class WoolworthsPage {
 
   async backToHome(): Promise<void> {
     await this.page.goto(this.url, { waitUntil: "domcontentloaded" });
-    await this.searchInput.waitFor({ state: "visible", timeout: 15000 });
+
+    const ready = await this.searchInput
+      .isVisible({ timeout: 5000 })
+      .catch(() => false);
+
+    if (!ready) {
+      await this.page.reload({ waitUntil: "domcontentloaded" });
+      await this.searchInput.waitFor({ state: "visible", timeout: 10000 });
+    }
   }
 
   async searchProduct(query: string): Promise<void> {
