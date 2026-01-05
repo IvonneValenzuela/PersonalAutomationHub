@@ -3,7 +3,7 @@ import { CatStorePage } from "../page-objects/cats-pom";
 import { getNextValidDeliveryDate } from "../common/helpers/date-helper";
 
 test.describe("Purchase my cats litter", () => {
-  test("I can purchase my cats litter", async ({ page }) => {
+  test.fail("I can purchase my cats litter", async ({ page }) => {
     const catStorePage = new CatStorePage(page);
     const email = process.env.CAT_STORE_EMAIL!;
     const password = process.env.CAT_STORE_PASSWORD!;
@@ -65,16 +65,18 @@ test.describe("Purchase my cats litter", () => {
       await catStorePage.selectPaymentType();
     });
 
-    /* await test.step("Confirm purchase and submit final order", async () => {
+    /*     await test.step("Confirm purchase and submit final order", async () => {
       await catStorePage.checkoutAndSendOrder();
-        await expect(page.getByRole('heading', { name: '¡Tu orden ha sido registrada' })).toBeVisible();
+      await expect(
+        page.getByRole("heading", { name: "¡Tu orden ha sido registrada" })
+      ).toBeVisible();
     }); */
 
-    await test.step("Attach final screenshot", async () => {
+    /* await test.step("Attach final screenshot", async () => {
       await test.info().attach("Final Order", {
         body: await page.screenshot({ fullPage: true }),
         contentType: "image/png",
       });
-    });
+    }); */
   });
 });

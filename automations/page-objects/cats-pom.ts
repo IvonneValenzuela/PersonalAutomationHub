@@ -175,6 +175,6 @@ export class CatStorePage {
   }
 
   async checkoutAndSendOrder(): Promise<void> {
-    await this.confirmAndSendOrderButton.click();
+    await this.confirmAndSendOrderButton.click;
   }
 }

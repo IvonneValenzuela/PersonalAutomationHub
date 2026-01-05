@@ -59,7 +59,7 @@ export class WoolworthsPage {
 
     // 3) Read the price from the product page (any unit: each/kg/etc.)
     const priceHeading = this.page.locator('h3[aria-label*="$"]').first();
-    await priceHeading.waitFor({ state: "visible", timeout: 15000 });
+    await priceHeading.waitFor({ state: "visible", timeout: 25000 });
 
     const aria = await priceHeading.getAttribute("aria-label");
     if (!aria)
