@@ -57,7 +57,8 @@ test.describe("Weekly Woolworths Price Checker", () => {
           price: null,
         });
       } finally {
-        await woolworths.backToHome();
+        await page.waitForTimeout(300 + Math.random() * 700);
+        await woolworths.resetSearch();
       }
     }
 
