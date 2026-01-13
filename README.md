@@ -81,6 +81,15 @@ Fetches prices for a custom grocery list on **Woolworths NZ**, then prints a gro
 - Supports unit labels (e.g. `per kg`, `per ea`, etc.)
 - Final output grouped by category + totals
 
+### ⚠️ Woolworths automation note
+
+Woolworths automations run reliably in a local environment.
+
+During CI execution, requests originating from GitHub Actions (datacenter IPs) are intermittently blocked, resulting in network interruptions and incomplete page rendering.
+
+To ensure CI stability and meaningful signal, Woolworths tests are intentionally excluded from the public CI pipeline.  
+This behaviour was validated through connectivity checks (`curl`) and Playwright traces.
+
 ---
 
 ## 🚀 Setup
