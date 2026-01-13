@@ -26,14 +26,15 @@ export default defineConfig({
   reporter: [["list"], ["html", { open: "always", port: 0 }]],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`. */
-    // baseURL: 'http://localhost:3000',
+    launchOptions: {
+      args: ["--disable-http2"],
+    },
 
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
-    trace: "on",
+    trace: "on-first-retry",
     video: "retain-on-failure",
+
     actionTimeout: 15000,
-    navigationTimeout: 45000,
+    navigationTimeout: 60000,
   },
 
   /* Configure projects for major browsers */
@@ -42,13 +43,21 @@ export default defineConfig({
     {
       name: "Google Chrome",
       use: { ...devices["Desktop Chrome"] },
+      testIgnore: [
+        "automations/**/weekly-price-checker.spec.ts",
+        "automations/**/weekly-woolworths-price-checker.spec.ts",
+      ],
       workers: 1,
     },
 
-    /* {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    }, */
+    {
+      name: "firefox",
+      use: { ...devices["Desktop Firefox"] },
+      testMatch: [
+        "automations/**/weekly-price-checker.spec.ts",
+        "automations/**/weekly-woolworths-price-checker.spec.ts",
+      ],
+    },
 
     // 🔗 API (API specs only)
     /* - Api Tests are not expected to be run against any device */

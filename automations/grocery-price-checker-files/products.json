@@ -1,0 +1,39 @@
+[
+  {
+    "id": "kalo-greek-yoghurt",
+    "label": "Greek Yoghurt 800g",
+    "category": "dairy",
+    "woolworthsQuery": "Meadow Fresh Kalo Yoghurt Tub Greek 800g",
+    "woolworthsMatchText": "Meadow Fresh Kalo Yoghurt Tub Greek",
+    "newWorldQuery": "Meadow Fresh Kalo Natural Greek Yoghurt 800g",
+    "newWorldMatchText": "Meadow Fresh Kalo Natural Greek Yoghurt"
+  },
+  {
+    "id": "woodland-eggs-free-range",
+    "label": "Woodland Free Range size 8 Eggs 10pk",
+    "category": "protein",
+    "woolworthsQuery": "Woodland Eggs Free Range Size 8",
+    "woolworthsMatchText": "Woodland Eggs Free Range Size 8",
+    "newWorldQuery": "Woodland Free Range Grade 8 Eggs 10pk",
+    "newWorldMatchText": "Woodland Free Range Grade 8 Eggs 10pk"
+  },
+  {
+    "id": "chicken-breast",
+    "label": "Chicken breast (boneless, skinless)",
+    "category": "protein",
+    "woolworthsQuery": "Woolworths NZ Chicken Breast Skinless Boneless Min Order 1kg",
+    "woolworthsMatchText": "Woolworths NZ Chicken Breast Skinless Boneless Min Order 1kg",
+    "newWorldQuery": "Skinless Chicken Breast kg",
+    "newWorldMatchText": "Skinless Chicken Breast kg"
+  },
+
+  {
+    "id": "celery",
+    "label": "Celery",
+    "category": "veggies",
+    "woolworthsQuery": "Fresh Vegetable Celery Half Each",
+    "woolworthsMatchText": "Fresh Vegetable Celery Half Each",
+    "newWorldQuery": "Celery Half",
+    "newWorldMatchText": "Celery Half ea"
+  }
+]

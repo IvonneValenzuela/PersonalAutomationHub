@@ -1,0 +1,114 @@
+[
+  {
+    "id": "kalo-greek-yoghurt",
+    "label": "Greek Yoghurt size 800",
+    "category": "dairy",
+    "unit": "gr",
+    "woolworthsQuery": "Meadow Fresh Kalo Yoghurt Tub Greek 800g",
+    "woolworthsMatchText": "Meadow Fresh Kalo Yoghurt Tub Greek"
+  },
+  {
+    "id": "woodland-eggs-free-range",
+    "label": "Woodland Free Range size 8 Eggs",
+    "category": "protein",
+    "unit": "10pk",
+    "woolworthsQuery": "Woodland Eggs Free Range Size 8",
+    "woolworthsMatchText": "Woodland Eggs Free Range Size 8"
+  },
+  {
+    "id": "chicken-breast",
+    "label": "Chicken breast",
+    "category": "protein",
+    "unit": "kg",
+    "woolworthsQuery": "Woolworths NZ Chicken Breast Skinless Boneless Min Order 1kg",
+    "woolworthsMatchText": "Woolworths NZ Chicken Breast Skinless Boneless Min Order 1kg"
+  },
+  {
+    "id": "chicken-whole",
+    "label": "Chicken Whole",
+    "category": "protein",
+    "unit": "kg",
+    "woolworthsQuery": "Woolworths Chicken Whole 1.9kg",
+    "woolworthsMatchText": "Woolworths Chicken Whole"
+  },
+  {
+    "id": "beef-rump-steak",
+    "label": "Beef Rump Steakt",
+    "category": "protein",
+    "unit": "kg",
+    "woolworthsQuery": "Woolworths NZ Beef Rump Steak Grass Fed 1pce",
+    "woolworthsMatchText": "Woolworths NZ Beef Rump Steak Grass Fed 1pce"
+  },
+  {
+    "id": "celery",
+    "label": "Celery",
+    "category": "veggies",
+    "unit": "half",
+    "woolworthsQuery": "Fresh Vegetable Celery Half Each",
+    "woolworthsMatchText": "Fresh Vegetable Celery Half Each"
+  },
+  {
+    "id": "cucumber",
+    "label": "Telegraph Cucumber",
+    "category": "veggies",
+    "unit": "ea",
+    "woolworthsQuery": "Fresh Vegetable Cucumbers Telegraph",
+    "woolworthsMatchText": "Fresh Vegetable Cucumbers Telegraph"
+  },
+  {
+    "id": "tomato",
+    "label": "Tomato",
+    "category": "veggies",
+    "unit": "kg",
+    "woolworthsQuery": "Fresh Tomatoes Loose",
+    "woolworthsMatchText": "Fresh Tomatoes Loose"
+  },
+  {
+    "id": "ginger",
+    "label": "Ginger",
+    "category": "veggies",
+    "unit": "kg",
+    "woolworthsQuery": "Fresh Vegetable Ginger Whole Loose",
+    "woolworthsMatchText": "Fresh Vegetable Ginger Whole"
+  },
+  {
+    "id": "garlic-bulb",
+    "label": "Garlic Bulb",
+    "category": "veggies",
+    "unit": "ea",
+    "woolworthsQuery": "Woolworths NZ Garlic Bulb Single",
+    "woolworthsMatchText": "Woolworths NZ Garlic Bulb"
+  },
+  {
+    "id": "red-onion",
+    "label": "Red onion",
+    "category": "veggies",
+    "unit": "kg",
+    "woolworthsQuery": "Fresh Vegetable Red Onions Peeled",
+    "woolworthsMatchText": "Fresh Vegetable Red Onions Peeled"
+  },
+  {
+    "id": "brown-onion",
+    "label": "Brown onion",
+    "category": "veggies",
+    "unit": "kg",
+    "woolworthsQuery": "Fresh Vegetable Onions Brown",
+    "woolworthsMatchText": "Fresh Vegetable Onions Brown"
+  },
+  {
+    "id": "green-kiwi",
+    "label": "Green Kiwi",
+    "category": "fruit",
+    "unit": "kg",
+    "woolworthsQuery": "Fresh Fruit Kiwifruit Green Loose",
+    "woolworthsMatchText": "Fresh Fruit Kiwifruit Green Loose"
+  },
+  {
+    "id": "green-apple",
+    "label": "Green Apple",
+    "category": "fruit",
+    "unit": "kg",
+    "woolworthsQuery": "Fresh Fruit Apples Granny Smith",
+    "woolworthsMatchText": "Fresh Fruit Apples Granny Smith"
+  }
+]
