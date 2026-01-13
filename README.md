@@ -1,84 +1,37 @@
-# 🧩 Playwright Automation — Cat Store Purchase (Personal Project)
+# 🧩 Playwright Automations — Personal Automation Hub (QA Portfolio)
 
-## 🐱 Project Purpose
+A small collection of Playwright + TypeScript automations I built to solve real needs in my day-to-day life.
 
-This project automates a full end-to-end purchase flow on **https://www.depelos.co/** —  
-but it is also meaningful on a personal level.
+They also work as **QA portfolio pieces**, showcasing:
 
-I live abroad and my cats remain in Colombia. This automation lets me order
-their food and litter reliably and securely on their behalf.
-
-This project also serves as a **QA portfolio piece**, demonstrating:
-
-- Playwright + TypeScript expertise
-- Page Object Model (POM) architecture
-- Smart, accessible locators
-- Dynamic date handling (skipping Sundays + Colombian holidays)
-- Checkout and cart flow automation
-- Secure credential handling using environment variables
-- Screenshot capture + report attachments
-- Clean, structured, human-readable tests
-
-# 🚀 Features
-
-### ✔ End-to-end purchase flow
-
-Logs in, navigates product menus, selects preferred litter, adds to cart and completes checkout steps.
-
-### ✔ Dynamic delivery date
-
-Automatically selects **the next valid delivery date**, avoiding:
-
-- Sundays
-- Colombian public holidays (2025–2027)
-
-### ✔ Secure credentials
-
-Email & password are injected via environment variables, not saved in code.
-
-### ✔ Realistic automation
-
-Valid for real customer flows: adding products, checkout navigation, payment selection, accepting terms.
-
-### ✔ Screenshots + HTML reporting
-
-Final screenshot saved locally **and** attached to Playwright’s HTML report.
-
-### ✔ Clean, reusable POM
-
-Selectors are stable and methods descriptive.
+- Playwright + TypeScript
+- Page Object Model (POM)
+- Robust locators (role/test-id/aria-friendly)
+- Resilient flows (search → match → product detail)
+- Environment variables for credentials
+- Traces & videos on failures
+- Clean, readable test output
 
 ---
 
-# 🔧 Prerequisites
+## 📌 Automations Included
 
-- **Node.js v16+**
-- **npm** or **pnpm**
-- **Playwright browsers**
+### 1) 🐱 Cat Store Purchase — End-to-end order flow (Colombia)
 
-Install all requirements:
+Automates a full purchase flow on **https://www.depelos.co/**.
 
-```bash
-npm install
-npx playwright install
-```
+I live abroad and my cats remain in Colombia. This automation helps me order their food and litter reliably on their behalf.
 
-**Environment Variables**
-**Environment Variables**
+**Spec:**
 
-- The test requires credentials to log into the store. Set the following environment variables before running tests:
-- **`CAT_STORE_EMAIL`**: Account email used to sign in
-- **`CAT_STORE_PASSWORD`**: Account password
+- `cats-purchase-automation.spec.ts`
 
-⚠️ Never commit credentials or .env files to GitHub.
-Use a separate test account if possible.
+**Highlights**
 
----
-
-▶️ Running Tests
-
-Headless execution: npx playwright test
-Open the latest report: npx playwright show-report
+- Login → product selection → cart → checkout
+- Dynamic delivery date selection (skips Sundays + Colombian holidays)
+- Optional safety flag to avoid placing a real order (`PLACE_ORDER=false`)
+- Screenshot + Playwright HTML report attachments
 
 ---
 
@@ -98,13 +51,90 @@ common/helpers/holidays-colombia.ts
 
 ---
 
+### 2) 🛒 Weekly Grocery Price Checker — Woolworths vs New World (NZ)
+
+Compares prices between **Woolworths NZ** and **New World NZ** for the same items.
+
+**Spec:**
+
+- `weekly-price-checker.spec.ts`
+
+**Highlights**
+
+- Searches items in both stores
+- Uses match text to open the correct product (more reliable than “first result”)
+- Handles cases where New World blocks automation (Cloudflare) by returning `null` and continuing
+
+---
+
+### 3) 🧾 Weekly Woolworths Price Checker — My list, grouped by category (NZ)
+
+Fetches prices for a custom grocery list on **Woolworths NZ**, then prints a grouped summary.
+
+**Spec:**
+
+- `weekly-woolworths-price-checker.spec.ts`
+
+**Highlights**
+
+- Search → open correct product → extract price from product page
+- Supports unit labels (e.g. `per kg`, `per ea`, etc.)
+- Final output grouped by category + totals
+
+---
+
+## 🚀 Setup
+
+### Prerequisites
+
+- Node.js v16+ (recommended: latest LTS)
+- npm
+- Playwright browsers
+
+Install:
+
+```bash
+npm install
+npx playwright install
+```
+
+**🔐 Environment Variables**
+
+- Some tests require credentials. Set the following environment variables before running Cat store test:
+- **`CAT_STORE_EMAIL`**: Account email used to sign in
+- **`CAT_STORE_PASSWORD`**: Account password
+
+Optional:
+
+PLACE_ORDER=false (default)
+Set PLACE_ORDER=true only when you intentionally want to submit a real order.
+
+⚠️ Never commit credentials or .env files to GitHub. Use a separate test account if possible.
+
+---
+
+▶️ Running Tests
+
+Run all tests (headless): npx playwright test
+Run a single spec: npx playwright test automations/personal-automations/weekly-price-checker.spec.ts
+Open the latest report: npx playwright show-report
+
+### Examples
+
+Run the Woolworths price list checker:
+
+````bash
+npx playwright test automations/personal-automations/weekly-woolworths-price-checker.spec.ts
+
+---
+
 **How to run (Windows)**
 
 - **CMD (Windows):**
 
   ```cmd
   set CAT_STORE_EMAIL=you@example.com && set CAT_STORE_PASSWORD=secret && set PLACE_ORDER=false && npx playwright test
-  ```
+````
 
 - **PowerShell:**
 
@@ -116,25 +146,27 @@ common/helpers/holidays-colombia.ts
 
 ---
 
-🔍 What the Test Verifies
+⚠️ GitHub Actions / CI Note (Important)
 
----
+Some automations may pass locally but fail in GitHub Actions.
 
-🛑 Safety Note
+This is expected for certain retail websites due to:
 
-The final action that submits the real order can be enabled or disabled.
-If using real credentials, ensure you intentionally want to place the order.
+- Bot protection / anti-automation measures (e.g. Cloudflare)
+- IP reputation or geo/network restrictions on CI runners
+- Intermittent network issues or rate limiting
 
----
+Because of this, these automations are primarily intended to be executed locally.
+
+## Trace and video recording are enabled on failures to support debugging and analysis.
 
 👤 Author
 
 Ivonne
 QA · Manual & Automation ·
 
-🐾 🐱 This project represents a blend of personal care, automation skills, and real-world problem-solving. 🐱 🐾
+🐾 This repo represents a blend of personal care, automation skills, and real-world problem-solving.
 
 ```
-
 
 ```
