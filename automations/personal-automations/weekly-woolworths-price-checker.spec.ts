@@ -11,7 +11,7 @@ type Result = {
 };
 
 test.describe("Weekly Woolworths Price Checker", () => {
-  test.skip("Get Woolworths prices for my list (grouped by category)", async ({
+  test("Get Woolworths prices for my list (grouped by category)", async ({
     page,
   }) => {
     test.setTimeout(Math.max(2 * 60 * 1000, products.length * 25_000));
@@ -45,8 +45,8 @@ test.describe("Weekly Woolworths Price Checker", () => {
       } catch (err: any) {
         console.warn(
           `⚠️ Woolworths error for ${product.label}: ${String(
-            err?.message ?? err
-          )}`
+            err?.message ?? err,
+          )}`,
         );
 
         results.push({
@@ -76,7 +76,7 @@ test.describe("Weekly Woolworths Price Checker", () => {
     console.log("========================================");
 
     const categories = Array.from(grouped.keys()).sort((a, b) =>
-      a.localeCompare(b)
+      a.localeCompare(b),
     );
 
     for (const category of categories) {

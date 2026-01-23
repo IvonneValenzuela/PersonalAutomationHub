@@ -41,29 +41,36 @@ export class WoolworthsPage {
   async getSearchResultPrice(matchText: string): Promise<number> {
     const safe = matchText.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
-    // 1) Find the correct product link in search results
+    //Find the correct product link in search results
     const productLink = this.page
       .locator('a[href*="productdetails"]')
       .filter({ hasText: new RegExp(safe, "i") })
       .first();
 
+    // Wait until the product link is visible before interacting with it
     await productLink.waitFor({ state: "visible", timeout: 15000 });
 
-    // 2) Open the product details page
+    //Open the product details page
     await productLink.click();
 
-    // 3) Read the price from the product page (any unit: each/kg/etc.)
+    //Read the price from the product page (any unit: each/kg/etc.)
     const priceHeading = this.page.locator('h3[aria-label*="$"]').first();
+    // Wait until the price is visible on the page
     await priceHeading.waitFor({ state: "visible", timeout: 25000 });
 
-    const aria = await priceHeading.getAttribute("aria-label");
-    if (!aria)
-      throw new Error("No aria-label found on Woolworths product price");
+    // Extract the raw price text from the element
+    const priceText = await priceHeading.getAttribute("aria-label");
+    if (!priceText)
+      throw new Error("Woolworths: product price is not available");
 
-    const match = aria.match(/\$([0-9]+(?:\.[0-9]{2})?)/);
+    // Extract the numeric value from the price text
+    const match = priceText.match(/\$([0-9]+(?:\.[0-9]{2})?)/);
     if (!match)
-      throw new Error(`Could not parse price from aria-label: "${aria}"`);
+      throw new Error(
+        `Woolworths: could not extract numeric price from "${priceText}"`,
+      );
 
+    // Return the price as a number
     return Number(match[1]);
   }
 }
