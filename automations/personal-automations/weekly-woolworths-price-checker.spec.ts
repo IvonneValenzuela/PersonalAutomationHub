@@ -45,8 +45,8 @@ test.describe("Weekly Woolworths Price Checker", () => {
       } catch (err: any) {
         console.warn(
           `⚠️ Woolworths error for ${product.label}: ${String(
-            err?.message ?? err
-          )}`
+            err?.message ?? err,
+          )}`,
         );
 
         results.push({
@@ -76,7 +76,7 @@ test.describe("Weekly Woolworths Price Checker", () => {
     console.log("========================================");
 
     const categories = Array.from(grouped.keys()).sort((a, b) =>
-      a.localeCompare(b)
+      a.localeCompare(b),
     );
 
     for (const category of categories) {
