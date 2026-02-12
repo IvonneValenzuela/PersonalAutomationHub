@@ -17,13 +17,24 @@ export class WoolworthsPage1 {
   }
 
   async open(): Promise<void> {
-    await this.page.goto(this.url, {
-      waitUntil: "domcontentloaded",
-      timeout: 60000,
-    });
+    const maxAttempts = 3;
 
-    // ✅ Asegura que el search esté listo (evita flakiness en CI)
-    await this.searchInput.waitFor({ state: "visible", timeout: 25000 });
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      try {
+        await this.page.goto(this.url, {
+          waitUntil: "domcontentloaded",
+          timeout: 60000,
+        });
+
+        // Espera a que el search REAL esté visible (selector estable)
+        await this.searchInput.waitFor({ state: "visible", timeout: 25000 });
+
+        return; // ✅ listo
+      } catch (e) {
+        if (attempt === maxAttempts) throw e;
+        await this.page.waitForTimeout(1500);
+      }
+    }
   }
 
   async resetSearch(): Promise<void> {
