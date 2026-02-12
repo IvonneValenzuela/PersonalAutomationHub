@@ -46,6 +46,7 @@ export default defineConfig({
       testIgnore: [
         "automations/**/weekly-price-checker.spec.ts",
         "automations/**/weekly-woolworths-price-checker.spec.ts",
+        "automations/**/one-product-woolworths-price-checker.spec.ts"
       ],
       workers: 1,
     },
@@ -56,6 +57,7 @@ export default defineConfig({
       testMatch: [
         "automations/**/weekly-price-checker.spec.ts",
         "automations/**/weekly-woolworths-price-checker.spec.ts",
+        "automations/**/one-product-woolworths-price-checker.spec.ts"
       ],
     },
 

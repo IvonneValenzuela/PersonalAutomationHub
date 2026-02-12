@@ -33,6 +33,7 @@ test.describe("Weekly Woolworths Price Checker", () => {
         const price = await woolworths.getSearchResultPrice(matchText);
 
         const unitLabel = product.unit ? ` per ${product.unit}` : "";
+
         console.log(`Price now: $${price.toFixed(2)}${unitLabel}`);
 
         results.push({
