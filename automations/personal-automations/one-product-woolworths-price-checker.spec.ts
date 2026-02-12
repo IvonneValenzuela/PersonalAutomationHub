@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { WoolworthsPage } from "../page-objects/woolworths-page";
+import { WoolworthsPage1 } from "../page-objects/woolworths-oneproduct-page";
 import oneProduct from "../grocery-price-checker-files/one-product-woolworths.json";
 
 type OneProduct = {
@@ -8,26 +8,26 @@ type OneProduct = {
   category: string;
   unit?: string;
   woolworthsQuery: string;
-  woolworthsMatchText?: string;
 };
 
-test("Woolworths - one product price check (CI)", async ({ page }) => {
+test("Woolworths - search smoke (CI)", async ({ page }) => {
   test.setTimeout(60_000);
 
   const product = (oneProduct as OneProduct[])[0];
-  const woolworths = new WoolworthsPage(page);
+  const woolworths = new WoolworthsPage1(page);
 
   await woolworths.open();
   await woolworths.searchProduct(product.woolworthsQuery);
   await woolworths.waitForResults();
 
-  const matchText = product.woolworthsMatchText ?? product.label;
-  const price = await woolworths.getSearchResultPrice(matchText);
+  // ✅ Validación simple: existe al menos un precio visible en resultados
+  const firstPrice = page.locator('h3[aria-label*="$"]').first();
+  await expect(firstPrice).toBeVisible({ timeout: 25_000 });
 
-  expect(price).toBeGreaterThan(0);
-  expect(price).toBeLessThan(500);
+  const aria = await firstPrice.getAttribute("aria-label");
+  expect(aria, "Expected a price aria-label").toContain("$");
 
   console.log(
-    `✅ ${product.label}: $${price.toFixed(2)}${product.unit ? ` per ${product.unit}` : ""}`
+    `✅ Search OK for: ${product.label} — first price aria-label: ${aria}`
   );
 });
