@@ -20,8 +20,8 @@ jobs:
         run: npm install
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
-      - name: Run Playwright tests (single product - firefox)
-        run: npx playwright test automations/personal-automations/one-product-woolworths-price-checker.spec.ts --project=firefox --reporter=html --trace=on-first-retry
+      - name: Run Playwright tests
+        run: npx playwright test
       - name: Upload Playwright HTML report
         if: always()
         uses: actions/upload-artifact@v4

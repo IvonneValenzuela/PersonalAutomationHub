@@ -19,10 +19,7 @@ test("Woolworths search Kalo yogurt", async ({ page }) => {
   try {
     await woolworths.open();
   } catch (e: any) {
-    test.skip(
-      true,
-      `External site did not load in CI: ${String(e?.message ?? e)}`
-    );
+    test.skip(true, `External site did not load: ${String(e?.message ?? e)}`);
   }
 
   await woolworths.searchProduct(product.woolworthsQuery);
