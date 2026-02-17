@@ -8,6 +8,14 @@
     "woolworthsMatchText": "Meadow Fresh Kalo Yoghurt Tub Greek"
   },
   {
+    "id": "brie-cheese",
+    "label": "Brie Cheese",
+    "category": "dairy",
+    "unit": "gr",
+    "woolworthsQuery": "whitestone brie cheese double cream Wheel 125g",
+    "woolworthsMatchText": "Whitestone Brie Cheese Double Cream"
+  },
+  {
     "id": "woodland-eggs-free-range",
     "label": "Woodland Free Range size 8 Eggs",
     "category": "protein",
@@ -32,8 +40,16 @@
     "woolworthsMatchText": "Woolworths Chicken Whole"
   },
   {
+    "id": "milk-calcium",
+    "label": "Milk Calcium Enriched",
+    "category": "dairy",
+    "unit": "L",
+    "woolworthsQuery": "woolworths milk calcium enriched Bottle 1L",
+    "woolworthsMatchText": "Woolworths Milk Calcium Enriched"
+  },
+  {
     "id": "beef-rump-steak",
-    "label": "Beef Rump Steakt",
+    "label": "Beef Rump Steak",
     "category": "protein",
     "unit": "kg",
     "woolworthsQuery": "Woolworths NZ Beef Rump Steak Grass Fed 1pce",

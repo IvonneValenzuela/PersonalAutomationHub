@@ -1,6 +1,6 @@
 import { type Locator, type Page } from "@playwright/test";
 
-export class WoolworthsPage {
+export class woolworthsPage {
   private readonly url = "https://www.woolworths.co.nz/";
   private readonly page: Page;
 
