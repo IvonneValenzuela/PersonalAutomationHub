@@ -44,7 +44,7 @@ export default defineConfig({
       name: "Google Chrome",
       use: { ...devices["Desktop Chrome"] },
       testIgnore: [
-        "automations/**/weekly-price-checker.spec.ts",
+        "automations/**/supermarket-price-comparison.spec.ts",
         "automations/**/weekly-woolworths-price-checker.spec.ts",
       ],
       workers: 1,
@@ -54,7 +54,7 @@ export default defineConfig({
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
       testMatch: [
-        "automations/**/weekly-price-checker.spec.ts",
+        "automations/**/supermarket-price-comparison.spec.ts",
         "automations/**/weekly-woolworths-price-checker.spec.ts",
       ],
     },

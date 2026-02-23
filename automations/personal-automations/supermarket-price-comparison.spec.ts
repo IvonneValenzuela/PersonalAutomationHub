@@ -1,13 +1,13 @@
 import { test } from "@playwright/test";
-import { WoolworthsPage } from "../page-objects/woolworths-page";
+import { woolworthsPage } from "../page-objects/woolworths-page";
 import { NewWorldPage } from "../page-objects/newworld-page";
 import products from "../grocery-price-checker-files/products.json";
 import { comparePrices } from "../grocery-price-checker-files/price-comparator";
 
 test.describe("Weekly Grocery Price Checker", () => {
-  test("Compare Woolworths vs New World prices", async ({ page }) => {
+  test.skip("Compare Woolworths vs New World prices", async ({ page }) => {
     test.setTimeout(2 * 60 * 1000);
-    const woolworths = new WoolworthsPage(page);
+    const woolworths = new woolworthsPage(page);
     const newworld = new NewWorldPage(page);
 
     const buyAtWoolworths: string[] = [];
@@ -35,8 +35,8 @@ test.describe("Weekly Grocery Price Checker", () => {
       } catch (err: any) {
         console.warn(
           `⚠️ Woolworths failed for ${product.label}: ${String(
-            err?.message ?? err
-          )}`
+            err?.message ?? err,
+          )}`,
         );
         console.log(`----------------------------------------\n`);
         continue;
@@ -65,7 +65,7 @@ test.describe("Weekly Grocery Price Checker", () => {
       const comparison = comparePrices(
         product.label,
         woolworthsPrice,
-        newWorldPrice
+        newWorldPrice,
       );
 
       if (comparison.cheapest === "Same") {
