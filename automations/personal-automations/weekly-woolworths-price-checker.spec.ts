@@ -34,22 +34,19 @@ test.describe("Weekly Woolworths Price Checker", () => {
         await woolworths.searchProduct(product.woolworthsQuery);
         await woolworths.waitForResults();
 
-        const matchText = product.woolworthsMatchText ?? product.label;
-
-        const { price, inStock } =
-          await woolworths.getSearchResultDetails(matchText);
-
-        const unitLabel = product.unit ? ` per ${product.unit}` : "";
+        const { price, inStock } = await woolworths.getSearchResultDetails(
+          product.woolworthsMatchText,
+        );
 
         const stockText =
           inStock === null
             ? "⚪ Stock: N/A"
-            : inStock
+            : inStock === true
               ? "✅ In stock"
               : "❌ Out of stock";
 
         console.log(
-          `${stockText} — Price now: $${price.toFixed(2)}${unitLabel}`,
+          `${stockText} — Price now: $${price.toFixed(2)} per ${product.unit}`,
         );
 
         results.push({
@@ -76,7 +73,7 @@ test.describe("Weekly Woolworths Price Checker", () => {
           inStock: null,
         });
       } finally {
-        await page.waitForTimeout(300 + Math.random() * 700);
+        await page.waitForTimeout(300 + Math.random() * 700); // ask chatgpt for a better way to clarify what '300 + Math.random() * 700' does
 
         // 🔹 Important: go back to home before next iteration
         await woolworths.goHome();
@@ -84,13 +81,14 @@ test.describe("Weekly Woolworths Price Checker", () => {
       }
     }
 
+    // recatoring this mondiu
     // ✅ Group by category
     const grouped = new Map<string, Result[]>();
 
-    for (const r of results) {
-      const key = r.category || "uncategorised";
+    for (const result of results) {
+      const key = result.category;
       const list = grouped.get(key) ?? [];
-      list.push(r);
+      list.push(result);
       grouped.set(key, list);
     }
 

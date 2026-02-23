@@ -41,11 +41,15 @@ export class WoolworthsPage {
     });
   }
 
-  async setLocation(): Promise<void> {
+  /**
+   * This method sets the desire location based on the store
+   * @param storeID (optional) selects the desire store, if null, defaults to 297 (Johnsonville)
+   */
+  async setLocation(storeID: string = "297"): Promise<void> {
     await this.changeBranch.click();
     await this.pickUpButton.click();
     await this.changeStoreButton.click();
-    await this.storeDropdownButton.selectOption("297");
+    await this.storeDropdownButton.selectOption(storeID);
     await this.myClosesLocation.click();
     await this.mainPage.click();
   }
